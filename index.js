@@ -34,19 +34,20 @@ checkPassword = async (username, plaintextPassword) => {
     }
     else {
         // Tell the user they can't login to a non-existent account
-        console.log('\n❌ Sorry, but this user does not exist.\n')
+        console.log('\n❌ Sorry, but this user does not exist. ❌\n')
     }
 }
 
 hashPassword = async (username, password) => {
     // TODO: Make sure to delete this console.log once you're done implementing the function!
-    console.log('\nUh-oh, hashPassword is not yet implemented. 😢')
+    // console.log('\nUh-oh, hashPassword is not yet implemented. 😢')
 
     // TODO: Make the password hash using bcrypt
-
+    let hashedPassword = await bcrypt.hash(password, 12)
     // TODO: Add the user and password hash to the global store object
-
+    globalStore[username] = hashedPassword
     // TODO: Print a status update including the username and password hash
+    console.log(`\n✅ ${username} has been added to the system! Their password hash is ${hashedPassword} ✅\n`)
 }
 
 
